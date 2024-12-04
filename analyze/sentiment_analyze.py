@@ -1,6 +1,5 @@
 try:
     from transformers import pipeline
-    import numpy as np
 except ImportError as e:
     print(f"インポートエラー: {e}")
     raise

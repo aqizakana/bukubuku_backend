@@ -19,6 +19,3 @@ def analyze_8labels(text):
         print(f"感情分析エラー: {e}")
         return {"error": str(e)}
 
-""" # テスト用のテキスト
-text = '夕食がとても美味しく友達も喜んでいました。ありがとうございます！客室担当方はフレンドリーで丁寧に接客してくれました。朝ご飯もちょうどいいくらいの量で満足でした。部屋も予想よりも広くびっくりしました。'
-print(analyze_sentiment_text(text)) """
