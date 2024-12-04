@@ -1,9 +1,0 @@
-runtime: python39
-env: standard
-entrypoint: gunicorn -b :$PORT main:app
-
-# 下記はhttpでアクセスがあった際、httpsにリダイレクトするための記述
-handlers:
-  - url: .*
-    secure: always
-    script: auto
