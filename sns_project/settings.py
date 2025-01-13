@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_KEY')
 if os.getenv('GAE_APPLICATION', None):
    # 本番環境
    DEBUG = False
-   ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS')
+   
 else:
    # 開発環境
    DEBUG = True
@@ -89,12 +89,8 @@ WSGI_APPLICATION = 'sns_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sns_project',
-        'USER': 'sns_user',
-        'PASSWORD': 'architecture56',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

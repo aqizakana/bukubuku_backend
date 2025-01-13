@@ -14,7 +14,7 @@ class Post(models.Model):
     
 
     def __str__(self):
-        return f"{self.user.username}: {self.content[:50]}..."
+        return f"{self.user.username}:{self.user.username}: {self.content[:50]}..."
 
     class Meta:
         ordering = ['-createdAt']

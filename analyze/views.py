@@ -5,12 +5,9 @@ from django.views.decorators.http import require_http_methods
 import json
 from .sentiment_analyze import analyze_sentiment_text
 from .charCount import charCount
-""" from .ML_Ask import analyze_ml_ask
-from .textBlob import NounPhrase """
+
 from ._8labels import  analyze_8labels
 
-
-import numpy as np
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -23,6 +20,7 @@ def analyze_sentiment(request):
         if len(text) > 512:
             text = text[:512]
         result = analyze_sentiment_text(text)
+        print("API Response:", result)  # Debug log
         return JsonResponse(result, safe=False)
     except json.JSONDecodeError:
         return JsonResponse({"error": "Invalid JSON"}, status=400)
@@ -41,6 +39,7 @@ def charCountView(request):
         if not text:
             return JsonResponse({'error': 'No text provided'}, status=400)
         result = charCount(text)
+        print("API Response:", result)  # Debug log
         return JsonResponse(result, safe=False)
     except json.JSONDecodeError:
         return JsonResponse({"error": "Invalid JSON"}, status=400)

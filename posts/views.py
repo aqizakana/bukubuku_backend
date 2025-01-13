@@ -10,6 +10,8 @@ from analyze._8labels import analyze_8labels
 from analyze.charCount import charCount
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
+from datetime import timedelta
 
 import json
 
@@ -19,8 +21,6 @@ class CreatePostView(generics.CreateAPIView):
     
     permission_classes = [permissions.AllowAny]
     
-    
-
     def perform_create(self, serializer):
         content = serializer.validated_data['content']  # 投稿の内容
         charCount_result = charCount(content)  # カウント結果
@@ -38,7 +38,6 @@ class CreatePostView(generics.CreateAPIView):
             analyze8labelsResult=analyze_8labels_result,  # 8ラベル分析
         )
 
-
 class PostListView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -49,5 +48,7 @@ class PostViewSet(generics.ListAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.AllowAny]  # 認証されていないユーザーもアクセス可能
 
-
-
+def delete_old_posts(request):
+    threshold = timezone.now() - timedelta(hours=48)
+    Post.objects.filter(createdAt__lt=threshold).delete()
+    return JsonResponse({'status': 'success', 'message': 'Old posts deleted'})

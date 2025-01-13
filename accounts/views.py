@@ -48,6 +48,8 @@ class UserInfoView(APIView):
             return Response({
                 'username': request.user.username,
                 'email': request.user.email,
+                'id': request.user.id,
+                
                 # 必要に応じて他のフィールドも追加
             })
             
@@ -64,7 +66,8 @@ class LoginView(APIView):
         if serializer.is_valid():
             user = authenticate(
                 username=serializer.validated_data['username'],
-                password=serializer.validated_data['password']
+                password=serializer.validated_data['password'],
+                
             )
             if user:
                 login(request, user)

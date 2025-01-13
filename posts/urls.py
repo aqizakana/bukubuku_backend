@@ -14,4 +14,6 @@ urlpatterns = [
     
     # 直近の投稿リスト取得用のエンドポイント (GET)
     path('SetGet/', PostViewSet.as_view(), name='pre_post-list'),
+
+    #path('delete_old_posts/', delete_old_posts, name='delete_old_posts'),
 ]
