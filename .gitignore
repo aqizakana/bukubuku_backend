@@ -1,5 +1,30 @@
-node_modules/
-build/
-venv_new/
+/node_modules
+/build
+/venv_new
 *.log
-*.env
+/share
+venv_new/
+
+.gcloudignore
+# Python関連
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# 環境設定
+.env
+*.sqlite3
+
+# Django特有
+db.sqlite3
+media/
+staticfiles/
+migrations/
+
+# その他エディタ関連
+.idea/
+.vscode/
+.DS_Store
