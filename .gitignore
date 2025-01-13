@@ -28,3 +28,14 @@ migrations/
 .idea/
 .vscode/
 .DS_Store
+
+# 仮想環境
+venv/
+venv_new/
+# Pythonキャッシュ
+*.pyc
+__pycache__/
+# その他の不要ファイル
+*.log
+*.sqlite3
+*.swp
